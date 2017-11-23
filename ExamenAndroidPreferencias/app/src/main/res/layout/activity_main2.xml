@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.arpoga.prueba3a.Main2Activity">
+
+
+    <TextView
+        android:id="@+id/textViewDia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dia" />
+
+    <EditText
+        android:id="@+id/editTextDia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textViewHora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hora" />
+
+    <EditText
+        android:id="@+id/editTextHora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/buttonAtras"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="atras" />
+</LinearLayout>
