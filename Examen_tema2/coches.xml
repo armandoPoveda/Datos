@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concesionarios>
+	<taller>
+		<nombre>Engasa</nombre>
+		<direccion>
+			<nombre>Monestir Sta Maria</nombre>
+			<poblacion>Quart de Poblet</poblacion>
+		</direccion>
+		<coches>
+			<coche>
+				<marca>BMW</marca>
+				<modelo>Serie 3</modelo>
+			</coche>
+			<coche>
+				<marca>Citroen</marca>
+				<modelo>C3</modelo>
+			</coche>
+			<coche>	
+				<marca>Citroen</marca>
+				<modelo>C4</modelo>
+			</coche>
+		</coches>
+	</taller>
+	<taller>
+		<nombre>Ugartesa</nombre>
+		<direccion>
+			<nombre>Tomás Montañana</nombre>
+			<poblacion>Valencia</poblacion>
+		</direccion>
+		<coches>
+			<coche>
+				<marca>Citroen</marca>
+				<modelo>C4 Picasso</modelo>
+			</coche>
+			<coche>
+				<marca>Seat</marca>
+				<modelo>León</modelo>
+			</coche>
+		</coches>
+	</taller>
+</concesionarios>
