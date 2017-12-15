@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.arpoga.sqliteyoutube.ConsultasActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextCiclo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:ems="10"
+            android:hint="Ciclo"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editTextCurso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:ems="10"
+            android:hint="Curso"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonTodosProfesores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Todos los profesores" />
+
+        <Button
+            android:id="@+id/buttonTodosAlumnos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Todos los alumnos" />
+
+        <Button
+            android:id="@+id/buttonMostrarTodos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profesores y alumnos" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="116dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonMostrarProfesores"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mostrar Profesores" />
+
+            <ListView
+
+                android:id="@+id/Lista"
+                android:layout_width="match_parent"
+                android:layout_height="121dp"
+                android:layout_weight="1">
+
+            </ListView>
+
+            <Button
+                android:id="@+id/buttonMostarAlumnos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mostrar Alumnos" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

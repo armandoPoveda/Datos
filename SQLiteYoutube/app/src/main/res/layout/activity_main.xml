@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.arpoga.sqliteyoutube.MainActivity">
+
+
+    <TextView
+        android:id="@+id/textViewRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:gravity="center_vertical|center"
+        android:text="REGISTRAR USUARIO"
+        android:textColor="@android:color/background_dark"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
+
+        <Button
+            android:id="@+id/buttonRegistarAlumno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:text="registrar alumno" />
+
+        <Button
+            android:id="@+id/buttonRegistrarProfesor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:text="registrar profesor" />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/buttonConsultarRegistros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="50dp"
+        android:onClick="onClick"
+        android:text="Consultar Registros" />
+
+    <Button
+        android:id="@+id/buttonBorrarBBDD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="50dp"
+        android:onClick="onClick"
+        android:text="borrar bbdd" />
+
+</LinearLayout>
