@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.arpoga.googleservices.MainActivity">
+
+    <EditText
+        android:id="@+id/editText_Buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nombre archivo"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/button_Buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buscar"/>
+
+    <EditText
+        android:id="@+id/editText_AñadirTexto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Añade texto"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editText_AñadirTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Añade un título"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/button_AñadirTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Añadir archivo"/>
+
+    <Button
+        android:id="@+id/button_ListarArchivos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Listar archivos"/>
+
+    <ListView
+        android:id="@+id/Lista"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+</LinearLayout>
