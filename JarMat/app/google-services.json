@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "260475927746",
+    "firebase_url": "https://jarmat-1fa93.firebaseio.com",
+    "project_id": "jarmat-1fa93",
+    "storage_bucket": "jarmat-1fa93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:260475927746:android:61a0ed1fd7cb2ac3",
+        "android_client_info": {
+          "package_name": "com.example.arpoga.jarmat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "260475927746-suvv4c5lh9l25nsaij37h9o1sls63vs0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.arpoga.jarmat",
+            "certificate_hash": "df99dd5e9ffc96a661412dbaacb6f0734ff69e5e"
+          }
+        },
+        {
+          "client_id": "260475927746-o398v055v6k0ijs309b2k8rbq4bp04ib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqmriNRBuK64JsWn09XJI7gNFtpu9cQ58"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "260475927746-o398v055v6k0ijs309b2k8rbq4bp04ib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

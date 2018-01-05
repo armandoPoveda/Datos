@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">JarMat</string>
+
+    <string name="nodo_usuarios">usuarios</string>
+    <string name="nodo_productos">productos</string>
+
+    <string name="campo_uid">uid</string>
+    <string name="campo_alias">alias</string>
+
+    <string-array name="categorias">
+
+        <item>Electronica</item>
+        <item>Hogar</item>
+        <item>Coches</item>
+
+    </string-array>
+
+</resources>
