@@ -21,7 +21,8 @@
         <activity android:name=".RegistrarProductoActivity" />
         <activity android:name=".MostrarProductoActivity" />
         <activity android:name=".MostrarTodosProductosActivity" />
-        <activity android:name=".ModificarProductoActivity"></activity>
+        <activity android:name=".ModificarProductoActivity" />
+        <activity android:name=".ModificarUsuarioActivity"></activity>
     </application>
 
 </manifest>

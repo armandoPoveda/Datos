@@ -13,41 +13,94 @@
         android:id="@+id/textView_MENU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="MENU" />
+        android:text="MENU"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24dp" />
 
     <Button
         android:id="@+id/button_Registrar_Producto"
-        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
         android:text="añadir producto" />
 
     <Button
         android:id="@+id/button_Mostrar_Producto"
-        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:text="mostrar mis productos" />
 
-    <Button
-        android:id="@+id/button_Mostrar_Todos_Producto"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="match_parent"
+
+    <LinearLayout
+
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="mostrar todos los productos" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_Mostrar_Producto_Categoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="productos por categoria" />
+
+        <Spinner
+
+            android:id="@+id/spinner_Categorias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/categorias">
+
+        </Spinner>
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_Mostrar_Producto_Usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="productos por usuario" />
+
+        <Spinner
+
+            android:id="@+id/spinner_Usuarios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </Spinner>
+
+        <TextView
+            android:id="@+id/textView_Alias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Alias"
+            android:textSize="24dp" />
+
+    </LinearLayout>
+
+    <Button
+
+        android:id="@+id/button_Modificar_Usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="modificar usuario" />
 
     <Button
         android:id="@+id/button_Cerrar_Sesion"
-        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:text="cerrar sesión" />
-
 
 </LinearLayout>

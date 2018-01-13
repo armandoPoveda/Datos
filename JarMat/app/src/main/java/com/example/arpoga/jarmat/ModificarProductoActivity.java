@@ -52,8 +52,8 @@ public class ModificarProductoActivity extends AppCompatActivity implements View
 
         Intent i = getIntent();
         Bundle extras = i.getExtras();
-
         String clave_producto = extras.getString("CLAVE_PRODUCTO");
+
         bbdd = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_productos)+"/"+clave_producto);
 
 

@@ -4,13 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
+    android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar.MinWidth"
     tools:context="com.example.arpoga.jarmat.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="20dp"
+        android:text="QuikTrade"
+        android:textColor="@color/colorAccent"
+        android:textSize="30dp" />
 
     <EditText
         android:id="@+id/editText_Correo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
         android:hint="email"
         android:inputType="textPersonName" />
@@ -19,20 +32,23 @@
         android:id="@+id/editText_Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
         android:ems="10"
         android:hint="contraseña"
         android:inputType="textPassword" />
 
     <LinearLayout
 
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/button_Registrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
             android:text="registrar" />
 
         <Button

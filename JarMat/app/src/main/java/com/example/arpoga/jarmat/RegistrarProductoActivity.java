@@ -1,5 +1,6 @@
 package com.example.arpoga.jarmat;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -68,6 +69,7 @@ public class RegistrarProductoActivity extends AppCompatActivity implements View
                 final String uid = mAuth.getCurrentUser().getUid();
 
                 if (TextUtils.isEmpty(nombre)
+
                         || TextUtils.isEmpty(descripcion)
                         || TextUtils.isEmpty(precio)) {
 

@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private EditText text_Password, text_Correo;
     private Button boton_Login, boton_Registrar;
+    private String email, password;
 
     private FirebaseAuth mAuth;
 
@@ -45,14 +46,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.button_Registrar:
 
-                Intent i = new Intent(MainActivity.this, RegistrarUsuarioActivity.class);
-                startActivity(i);
-                break;
+                email = text_Correo.getText().toString();
+                password = text_Password.getText().toString();
+
+                if(TextUtils.isEmpty(email)
+                        || TextUtils.isEmpty(password)){
+
+                    Toast.makeText(this, "Debes rellenar los campos vacios", Toast.LENGTH_SHORT).show();
+
+                }else{
+
+                    Intent i = new Intent(MainActivity.this, RegistrarUsuarioActivity.class);
+                    startActivity(i);
+                    break;
+
+                }
+
 
             case R.id.button_Login:
 
-                final String email = text_Correo.getText().toString();
-                String password = text_Password.getText().toString();
+                 email = text_Correo.getText().toString();
+                password = text_Password.getText().toString();
 
                 if (TextUtils.isEmpty(email)
 

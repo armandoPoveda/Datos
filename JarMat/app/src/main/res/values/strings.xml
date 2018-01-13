@@ -7,6 +7,7 @@
     <string name="campo_uid">uid</string>
     <string name="campo_alias">alias</string>
 
+
     <string-array name="categorias">
 
         <item>Electronica</item>

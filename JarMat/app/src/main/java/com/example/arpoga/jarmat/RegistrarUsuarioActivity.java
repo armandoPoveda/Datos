@@ -1,5 +1,6 @@
 package com.example.arpoga.jarmat;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,8 +34,9 @@ public class RegistrarUsuarioActivity extends AppCompatActivity implements View.
     private Button boton_Registrar;
 
     private FirebaseAuth mAuth;
-    private DatabaseReference bbdd;
+    private DatabaseReference bbddUsuario;
     private Query query;
+    private String alias, nombre, direccion, apellidos, correo, password, passwordRepetida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,9 @@ public class RegistrarUsuarioActivity extends AppCompatActivity implements View.
         boton_Registrar = (Button) findViewById(R.id.button_Guardar_Usuario);
         boton_Registrar.setOnClickListener(this);
 
+
         mAuth = FirebaseAuth.getInstance();
+        bbddUsuario = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_usuarios));
 
     }
 
@@ -62,13 +66,13 @@ public class RegistrarUsuarioActivity extends AppCompatActivity implements View.
 
             case R.id.button_Guardar_Usuario:
 
-                final String alias = text_Alias.getText().toString();
-                final String nombre = text_Nombre.getText().toString();
-                final String apellidos = text_Apellidos.getText().toString();
-                final String direccion = text_Direccion.getText().toString();
-                final String correo = text_Correo.getText().toString();
-                final String password = text_Password.getText().toString();
-                String passwordRepetida = text_Password_Repetida.getText().toString();
+                alias = text_Alias.getText().toString();
+                nombre = text_Nombre.getText().toString();
+                apellidos = text_Apellidos.getText().toString();
+                direccion = text_Direccion.getText().toString();
+                correo = text_Correo.getText().toString();
+                password = text_Password.getText().toString();
+                passwordRepetida = text_Password_Repetida.getText().toString();
 
                 if (TextUtils.isEmpty(alias)
                         || TextUtils.isEmpty(nombre)
@@ -84,8 +88,8 @@ public class RegistrarUsuarioActivity extends AppCompatActivity implements View.
 
                     if (password.equals(passwordRepetida)) {
 
-                        bbdd = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_usuarios));
-                        query = bbdd.orderByChild(getString(R.string.campo_alias)).equalTo(alias);
+                        bbddUsuario = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_usuarios));
+                        query = bbddUsuario.orderByChild(getString(R.string.campo_alias)).equalTo(alias);
 
                         query.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
@@ -110,8 +114,8 @@ public class RegistrarUsuarioActivity extends AppCompatActivity implements View.
 
                                                 String uid = mAuth.getCurrentUser().getUid();
                                                 Usuario usuario = new Usuario(alias, nombre, apellidos, direccion, correo, uid);
-                                                String clave = bbdd.push().getKey();
-                                                bbdd.child(clave).setValue(usuario);
+                                                String clave = bbddUsuario.push().getKey();
+                                                bbddUsuario.child(clave).setValue(usuario);
                                                 mAuth.signOut();
                                                 Toast.makeText(RegistrarUsuarioActivity.this, "Registro completo", Toast.LENGTH_SHORT).show();
                                                 finish();

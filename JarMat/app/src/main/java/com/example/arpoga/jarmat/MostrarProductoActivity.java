@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.arpoga.jarmat.Model.Producto;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +36,9 @@ public class MostrarProductoActivity extends AppCompatActivity {
    private FirebaseAuth mAuth;
    private String clave;
    private ArrayList<String> refProducto;
+   Producto producto = new Producto();
+   private String nombreProdcuto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +63,7 @@ public class MostrarProductoActivity extends AppCompatActivity {
                     //Recuperamos para cada datasnapshot un objeto producto
                     //del que recuperaremos su nombre para añadirlo al arraylist
                     Producto producto = datasnapshot.getValue(Producto.class);
+                    nombreProdcuto = producto.getNombre();
                     arrayList.add(producto.getNombre());
 
                     //Añadimos las claves al arraylist de referencias de productos
@@ -94,13 +99,12 @@ public class MostrarProductoActivity extends AppCompatActivity {
                 Intent i = new Intent(MostrarProductoActivity.this, ModificarProductoActivity.class);
                 i.putExtra("CLAVE_PRODUCTO",refProducto.get(posicion));
                 startActivity(i);
-
                 break;
 
             case R.id.remove:
                 bbdd = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_productos)+"/"+clave);
+                Toast.makeText(this, "El producto " + nombreProdcuto+ " se ha eliminado", Toast.LENGTH_SHORT).show();
                 bbdd.removeValue();
-
                 break;
         }
         return super.onContextItemSelected(item);

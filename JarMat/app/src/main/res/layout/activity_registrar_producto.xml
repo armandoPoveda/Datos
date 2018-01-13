@@ -44,6 +44,7 @@
         android:hint="Precio"/>
 
     <Spinner
+
         android:id="@+id/spinner_Categorias"
         android:entries="@array/categorias"
         android:layout_marginTop="10dp"
