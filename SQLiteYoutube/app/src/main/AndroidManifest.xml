@@ -19,6 +19,7 @@
         <activity android:name=".RegistroProfesorActivity" />
         <activity android:name=".RegistroAlumnoActivity" />
         <activity android:name=".ConsultasActivity" />
+        <activity android:name=".RegistrarAsignaturaActivity"></activity>
     </application>
 
 </manifest>

@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.buttonRegistarAlumno:
                 miIntent = new Intent(MainActivity.this, RegistroAlumnoActivity.class);
         }
+        switch (view.getId()){
+            case R.id.buttonRegistrarAsignatura:
+                miIntent = new Intent(MainActivity.this, RegistrarAsignaturaActivity.class);
+        }
         if(miIntent != null){
             startActivity(miIntent);
         }

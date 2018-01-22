@@ -26,6 +26,8 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(utilidades.CREAR_TABLA_ALUMNO);
         db.execSQL(utilidades.CREAR_TABLA_PROFESOR);
+        db.execSQL(utilidades.CREAR_TABLA_ASIGNATURA);
+
     }
 
     //actulizar la bbdd

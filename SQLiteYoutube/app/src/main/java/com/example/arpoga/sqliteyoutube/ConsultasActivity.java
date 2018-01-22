@@ -16,13 +16,14 @@ import android.widget.Toast;
 
 import com.example.arpoga.sqliteyoutube.utilidades.utilidades;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 
 public class ConsultasActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText Curso, Ciclo;
-    private Button botonTodosAlumnos, botonTodosProfesores, botonAlumnos, botonProfesores, ProfesoresAlumnos;
+    private Button botonTodosAlumnos, botonTodosProfesores, botonAlumnos, botonProfesores, ProfesoresAlumnos, boton_Asignaturas;
 
     ListView LV;
     ArrayAdapter Adaptador;
@@ -48,6 +49,8 @@ public class ConsultasActivity extends AppCompatActivity implements View.OnClick
         botonTodosProfesores.setOnClickListener(this);
         ProfesoresAlumnos = (Button) findViewById(R.id.buttonMostrarTodos);
         ProfesoresAlumnos.setOnClickListener(this);
+        boton_Asignaturas = (Button) findViewById(R.id.buttonMostrarAsignaturas);
+        boton_Asignaturas.setOnClickListener(this);
 
     }
 
@@ -71,6 +74,9 @@ public class ConsultasActivity extends AppCompatActivity implements View.OnClick
 
         if (view.getId() == R.id.buttonMostrarTodos) {
             MostrarTodos();
+        }
+        if (view.getId() == R.id.buttonMostrarAsignaturas) {
+            mostrarAsignaturas();
         }
     }
 
@@ -104,7 +110,6 @@ public class ConsultasActivity extends AppCompatActivity implements View.OnClick
 
         //añadimos al listview el adaptador con setAdapter
         LV.setAdapter(Adaptador);
-
         //cerramos la conexión
         db.close();
 
@@ -335,8 +340,30 @@ public class ConsultasActivity extends AppCompatActivity implements View.OnClick
                 todos.add(cursor2.getString(0));
             } while (cursor2.moveToNext());
         }
-
         Adaptador = new ArrayAdapter(this, android.R.layout.simple_list_item_1, todos);
+
+        LV.setAdapter(Adaptador);
+
+        db.close();
+    }
+
+    public void mostrarAsignaturas(){
+
+        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "usuarios2.bd", null, 1);
+
+        SQLiteDatabase db = conn.getReadableDatabase();
+
+        ArrayList<String> asignaturas = new ArrayList<>();
+
+        Cursor cursor = db.query(utilidades.TABLA_ASIGNATURA, null, null, null, null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                asignaturas.add(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+
+        Adaptador = new ArrayAdapter(this, android.R.layout.simple_list_item_1, asignaturas);
 
         LV.setAdapter(Adaptador);
 

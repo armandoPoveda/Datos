@@ -57,6 +57,12 @@
             android:layout_height="wrap_content"
             android:text="Profesores y alumnos" />
 
+        <Button
+            android:id="@+id/buttonMostrarAsignaturas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Todas asignaturas" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="116dp"
