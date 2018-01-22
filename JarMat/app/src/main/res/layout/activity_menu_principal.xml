@@ -23,7 +23,6 @@
         android:id="@+id/button_Registrar_Producto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:text="añadir producto" />
 
@@ -31,9 +30,20 @@
         android:id="@+id/button_Mostrar_Producto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:text="mostrar mis productos" />
 
+
+    <Button
+        android:id="@+id/button_Mostrar_Todos_Producto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver todos los productos" />
+
+    <Button
+        android:id="@+id/button_Mostrar_Favoritos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="favoritos" />
 
     <LinearLayout
 

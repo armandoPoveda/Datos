@@ -28,6 +28,7 @@ public class ModificarProductoActivity extends AppCompatActivity implements View
     private String alias,uid;
 
     private DatabaseReference bbdd;
+    private DatabaseReference bbdd1;
     private FirebaseAuth mAuth;
     private Query query;
 
@@ -47,27 +48,30 @@ public class ModificarProductoActivity extends AppCompatActivity implements View
         boton_Guardar = (Button) findViewById(R.id.button_Guardar);
         boton_Guardar.setOnClickListener(this);
 
-        bbdd = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_productos));
+       // bbdd = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_productos));
+        //bbdd1 = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_productos));
+
+
         mAuth = FirebaseAuth.getInstance();
 
         Intent i = getIntent();
         Bundle extras = i.getExtras();
+        extras = i.getExtras();
         String clave_producto = extras.getString("CLAVE_PRODUCTO");
 
-        bbdd = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_productos)+"/"+clave_producto);
-
+       bbdd = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_productos) + "/" + clave_producto);
 
         bbdd.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Producto p = dataSnapshot.getValue(Producto.class);
-                Log.d("PRODUCTO:",p.toString());
+                Log.d("PRODUCTO:", p.toString());
                 text_nombre.setText(p.getNombre());
                 text_descripcion.setText(p.getDescripcion());
                 text_precio.setText(p.getPrecio());
                 alias = p.getAlias();
                 uid = p.getUid();
-                switch (p.getCategoria()){
+                switch (p.getCategoria()) {
                     case "Electronica":
                         spinner_categoria.setSelection(0);
                         break;
@@ -88,8 +92,6 @@ public class ModificarProductoActivity extends AppCompatActivity implements View
         });
 
     }
-
-
 
     @Override
     public void onClick(View view) {

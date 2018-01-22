@@ -3,10 +3,12 @@
 
     <string name="nodo_usuarios">usuarios</string>
     <string name="nodo_productos">productos</string>
+    <string name="nodo_favoritos">favoritos</string>
+
 
     <string name="campo_uid">uid</string>
     <string name="campo_alias">alias</string>
-
+    <string name="campo_nombreProdcuto">nombre</string>
 
     <string-array name="categorias">
 

@@ -27,13 +27,14 @@ import java.util.List;
 
 public class MenuPrincipalActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button boton_Registrar_Producto, boton_Mostrar_Mis_Productos, boton_Mostrar_Prodcutos_Categoria, boton_Mostrar_Prodcutos_Usuario, boton_Cerrar_Sesion, boton_Modificar_Usuario;
+    private Button boton_mostar_Favoritos, boton_Registrar_Producto, boton_Mostrar_Mis_Productos, boton_Mostrar_Todos_Prodcutos, boton_Mostrar_Prodcutos_Categoria, boton_Mostrar_Prodcutos_Usuario, boton_Cerrar_Sesion, boton_Modificar_Usuario;
     private Spinner SpinnerCategorias, SpinnerUsuarios;
     private TextView textView_Alias;
+    ArrayList<String> categoriaHogar;
 
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
-    private DatabaseReference bbddProductos, bbddUsuarios;
+    private DatabaseReference bbddProductos, bbddUsuarios, bbddFavoritos;
     private String clave;
     private Query query;
 
@@ -56,6 +57,10 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
         boton_Mostrar_Prodcutos_Usuario.setOnClickListener(this);
         boton_Modificar_Usuario = (Button) findViewById(R.id.button_Modificar_Usuario);
         boton_Modificar_Usuario.setOnClickListener(this);
+        boton_Mostrar_Todos_Prodcutos = findViewById(R.id.button_Mostrar_Todos_Producto);
+        boton_Mostrar_Todos_Prodcutos.setOnClickListener(this);
+        boton_mostar_Favoritos = findViewById(R.id.button_Mostrar_Favoritos);
+        boton_mostar_Favoritos.setOnClickListener(this);
 
 
         SpinnerCategorias = (Spinner) findViewById(R.id.spinner_Categorias);
@@ -65,6 +70,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         bbddProductos = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_productos));
         bbddUsuarios = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_usuarios));
+        bbddFavoritos = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_favoritos));
 
 
 
@@ -86,6 +92,9 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
                 startActivity(new Intent(MenuPrincipalActivity.this, MostrarProductoActivity.class));
                 break;
 
+            case R.id.button_Mostrar_Todos_Producto:
+                MostrarTodosProductos();
+
             case R.id.button_Mostrar_Producto_Categoria:
                 MostrarPorCategorias();
                 break;
@@ -102,10 +111,16 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
                 mAuth.signOut();
                 finish();
                 break;
+
+            case R.id.button_Mostrar_Favoritos:
+                startActivity(new Intent(MenuPrincipalActivity.this, MostrarProductoActivity.class));
+                break;
         }
     }
 
+
     private void ModificarUsuario() {
+
         final String uid = mAuth.getCurrentUser().getUid();
 
         query = bbddUsuarios.orderByChild(getString(R.string.campo_uid)).equalTo(uid);
@@ -149,7 +164,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
-                            for (DataSnapshot datasnapshop : dataSnapshot.getChildren()) {
+                            for (DataSnapshot datasnapshop: dataSnapshot.getChildren()) {
 
                                 Producto producto = datasnapshop.getValue(Producto.class);
                                 String productoUsuario = producto.getNombre();
@@ -222,10 +237,9 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
 
         final String SpinnerCategorias = this.SpinnerCategorias.getSelectedItem().toString();
         query = bbddProductos.orderByChild(getString(R.string.nodo_productos));
+        categoriaHogar = new ArrayList<>();
 
-        query.addValueEventListener(new ValueEventListener() {
-
-            ArrayList<String> categoriaHogar = new ArrayList<>();
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -280,5 +294,30 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
             }
         });
 
+    }
+
+    public void MostrarTodosProductos(){
+        bbddProductos.addListenerForSingleValueEvent(new ValueEventListener() {
+            ArrayList arrayproductosTodos = new ArrayList();
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot datasnapshot: dataSnapshot.getChildren()){
+
+                    Producto producto = datasnapshot.getValue(Producto.class);
+                    String productoNombre = producto.getNombre();
+                    arrayproductosTodos.add(productoNombre);
+
+                }
+
+                Intent i = new Intent(MenuPrincipalActivity.this, MostrarTodosProductosActivity.class);
+                i.putStringArrayListExtra("Nombre", arrayproductosTodos);
+                startActivity(i);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

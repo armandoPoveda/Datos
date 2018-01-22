@@ -88,7 +88,6 @@ public class RegistrarUsuarioActivity extends AppCompatActivity implements View.
 
                     if (password.equals(passwordRepetida)) {
 
-                        bbddUsuario = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_usuarios));
                         query = bbddUsuario.orderByChild(getString(R.string.campo_alias)).equalTo(alias);
 
                         query.addListenerForSingleValueEvent(new ValueEventListener() {

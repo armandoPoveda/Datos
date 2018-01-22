@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.arpoga.jarmat.Model.Favoritos;
 import com.example.arpoga.jarmat.Model.Producto;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -31,12 +32,11 @@ public class MostrarProductoActivity extends AppCompatActivity {
    private ArrayList<String> arrayList;
    private ArrayAdapter arrayAdapter;
 
-   private DatabaseReference bbdd;
+   private DatabaseReference bbdd, bbddFavoritos, bbddUsuarios;
    private Query query;
    private FirebaseAuth mAuth;
    private String clave;
    private ArrayList<String> refProducto;
-   Producto producto = new Producto();
    private String nombreProdcuto;
 
     @Override
@@ -46,12 +46,14 @@ public class MostrarProductoActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listView);
         bbdd = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_productos));
+        bbddFavoritos = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_favoritos));
+        bbddUsuarios = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_usuarios));
         mAuth = FirebaseAuth.getInstance();
         String uid = mAuth.getCurrentUser().getUid();
 
-        query = bbdd.orderByChild(getString(R.string.campo_uid)).equalTo(uid);
+       /* query = bbdd.orderByChild(getString(R.string.campo_uid)).equalTo(uid);
 
-        query.addValueEventListener(new ValueEventListener() {
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 refProducto = new ArrayList<>();
@@ -75,7 +77,29 @@ public class MostrarProductoActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
+        });*/
+
+       query = bbddUsuarios.orderByChild(getString(R.string.campo_uid)).equalTo(uid);
+        Toast.makeText(MostrarProductoActivity.this, "Nombres prodcutos "+ arrayList, Toast.LENGTH_SHORT).show();
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot datasnapshot: dataSnapshot.getChildren()){
+                    Favoritos favoritos = datasnapshot.getValue(Favoritos.class);
+                    String nombreFavoritos = favoritos.getNombre();
+                   arrayList.add(nombreFavoritos);
+                   Toast.makeText(MostrarProductoActivity.this, "Nombres prodcutos "+ arrayList, Toast.LENGTH_SHORT).show();
+                }
+                arrayAdapter = new ArrayAdapter(MostrarProductoActivity.this, android.R.layout.simple_list_item_1, arrayList);
+                listView.setAdapter(arrayAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
         });
+
         registerForContextMenu(listView);
     }
 
@@ -106,7 +130,9 @@ public class MostrarProductoActivity extends AppCompatActivity {
                 Toast.makeText(this, "El producto " + nombreProdcuto+ " se ha eliminado", Toast.LENGTH_SHORT).show();
                 bbdd.removeValue();
                 break;
+
         }
         return super.onContextItemSelected(item);
     }
+
 }
