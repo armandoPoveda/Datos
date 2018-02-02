@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-feb-2018 15:27:15 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="Actuacion" table="ACTUACION">
+        <id name="hora" type="java.lang.String">
+            <column name="HORA" />
+            <generator class="assigned" />
+        </id>
+        <property name="escenario" type="int">
+            <column name="ESCENARIO" />
+        </property>
+    </class>
+</hibernate-mapping>

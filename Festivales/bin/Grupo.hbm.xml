@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-feb-2018 15:30:46 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="Grupo" table="GRUPO">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="nombre" type="java.lang.String">
+            <column name="NOMBRE" />
+        </property>
+        <property name="estilo" type="java.lang.String">
+            <column name="ESTILO" />
+        </property>
+        <list name="mienbros" inverse="false" table="MIEMBRO" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <composite-element class="Miembro">
+            <property name="nombre" type="java.lang.String" column="NOMBRE_ITEM"/>
+            <property name="instrumento" type="java.lang.String" column="CANTIDAD"/>
+            </composite-element>
+        </list>
+    </class>
+</hibernate-mapping>
