@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-feb-2018 0:57:11 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="Pedido" table="PEDIDO">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="fecha" type="java.lang.String">
+            <column name="FECHA" />
+        </property>
+        <list name="items" inverse="false" table="ITEM" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+             <composite-element class="Item">
+            <property name="nombre" type="java.lang.String" column="NOMBRE_ITEM"/>
+            <property name="cantidad" type="java.lang.Integer" column="CANTIDAD"/>
+            </composite-element>
+        </list>
+        <many-to-one name="empresa" class="Empresa" not-null="true">
+            <column name="EMPRESA" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

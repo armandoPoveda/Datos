@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-feb-2018 1:24:39 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="Direccion" table="DIRECCION">
+        <id name="cif" type="java.lang.String">
+            <column name="CIF" />
+            <generator class="foreign">
+            <param name="property">Empresa</param>
+            </generator>
+        </id>
+        <property name="calle" type="java.lang.String">
+            <column name="CALLE" />
+        </property>
+        <property name="poblacion" type="java.lang.String">
+            <column name="POBLACION" />
+        </property>
+        <property name="cp" type="int">
+            <column name="CP" />
+        </property>
+        <one-to-one name="Empresa" class="Empresa" constrained="true"/>
+    </class>
+</hibernate-mapping>
